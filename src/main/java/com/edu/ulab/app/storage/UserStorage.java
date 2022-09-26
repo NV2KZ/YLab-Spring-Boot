@@ -1,29 +1,29 @@
 package com.edu.ulab.app.storage;
 
-import com.edu.ulab.app.entity.User;
+import com.edu.ulab.app.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-public class UserStorage implements StorageRepository<User, Long> {
+public class UserStorage implements StorageRepository<UserEntity, Long> {
 
-    private final Map<Long, User> storage = new ConcurrentHashMap<>();
+    private final Map<Long, UserEntity> storage = new ConcurrentHashMap<>();
 
     @Override
-    public User save(User entity) {
+    public UserEntity save(UserEntity entity) {
         storage.put(entity.getId(), entity);
         return entity;
     }
 
     @Override
-    public Optional<User> findById(Long id) {
+    public Optional<UserEntity> findById(Long id) {
         return Optional.ofNullable(storage.get(id));
     }
 
     @Override
-    public List<User> findAll() {
+    public List<UserEntity> findAll() {
         return storage.values().stream().toList();
     }
 
