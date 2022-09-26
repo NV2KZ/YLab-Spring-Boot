@@ -77,7 +77,7 @@ public class UserDataFacade {
     }
 
     public UserBookResponse getUserWithBooks(Long userId) {
-        log.info("Got user id: {}", userId);
+        log.info("Got user id = {}", userId);
         UserDto userDto = userService.getUserById(userId);
         log.info("Got userDto by id: {}", userDto);
 
@@ -95,13 +95,13 @@ public class UserDataFacade {
     }
 
     public void deleteUserWithBooks(Long userId) {
-        log.info("Got user id: {}", userId);
+        log.info("Got user id by = {}", userId);
         userService.deleteUserById(userId);
-        log.info("Delete user by id: {}", userId);
+        log.info("Delete user by id = {}", userId);
         bookService.getBooksByUserId(userId)
                 .stream()
                 .map(BookDto::getId)
                 .forEach(bookService::deleteBookById);
-        log.info("Delete books by user id: {}", userId);
+        log.info("Delete books by user id = {}", userId);
     }
 }
