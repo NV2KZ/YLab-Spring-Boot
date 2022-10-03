@@ -10,9 +10,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "person", schema = "ulab_edu",
-        indexes = {@Index(name = "idx_ulab_edu_person_title",
-        columnList = "title")})
+@Table(name = "person", schema = "ulab_edu")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
